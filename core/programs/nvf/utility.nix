@@ -1,10 +1,11 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, osConfig
-, ...
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  osConfig,
+  ...
 }:
 {
   hm.programs.nvf.settings.vim.utility = {
@@ -15,6 +16,10 @@
     };
     outline.aerial-nvim = {
       enable = true;
+    };
+    vim-wakatime = {
+      enable = true;
+      cli-package = pkgs.wakatime-cli;
     };
     snacks-nvim = {
       enable = true;
