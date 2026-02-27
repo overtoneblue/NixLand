@@ -6,8 +6,12 @@
   pkgs,
   ...
 }:
+with lib;
+let
+  programs = config.modules.programs;
+in
 {
-  services = {
+  services = mkIf programs.ollama.enable {
     ollama = {
       enable = true;
       # package = pkgs.ollama-cuda;

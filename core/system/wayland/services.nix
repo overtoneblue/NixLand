@@ -15,7 +15,7 @@ in
 {
   config = mkIf env.isWayland {
     services.xserver.enable = true;
-    programs.obs-studio = {
+    programs.obs-studio = mkIf programs.obs.enable {
       enable = true;
 
       # optional Nvidia hardware acceleration
