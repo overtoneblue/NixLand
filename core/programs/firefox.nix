@@ -97,6 +97,9 @@ in
           settings = {
             "extensions.autoDisableScopes" = 0;
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+            # ctrl_alt Z to toggle sidebar expansions
+            "sidebar.verticalTabs" = true;
+            "sidebar.revamp" = true;
             # "browser.startup.homepage" = "https://docs.python.org/3/";
             "browser.uiCustomization.state" = builtins.toJSON {
               currentVersion = 20;
