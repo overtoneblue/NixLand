@@ -78,6 +78,7 @@ in
           go
 
           # networking tools
+          net-tools
           mtr # A network diagnostic tool
           iperf3
           dnsutils # `dig` + `nslookup`
