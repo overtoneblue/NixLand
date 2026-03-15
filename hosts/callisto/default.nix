@@ -59,6 +59,10 @@
         "panel-edp"
         "msm"
         "phy_qcom_edp"
+        "v4l2_mem2mem"
+        "venus_core"
+        "venus_dec"
+        "venus_enc"
       ];
     };
   };
