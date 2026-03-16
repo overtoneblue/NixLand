@@ -30,7 +30,7 @@ in
           #actual apps
           ttyper
           wofi
-          wpa_supplicant_gui
+          # wpa_supplicant_gui
           obsidian
           # stremio
           zathura
@@ -58,7 +58,7 @@ in
           virtiofsd
 
           # command line tools I use frequently
-          neofetch
+          fastfetch
           nnn # terminal file manager
           gnumake
 

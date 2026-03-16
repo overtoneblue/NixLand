@@ -93,7 +93,7 @@ in
         videos = "${config.hm.home.homeDirectory}/Media/Videos";
 
         extraConfig = {
-          XDG_SCREENSHOTS_DIR = "${config.hm.xdg.userDirs.pictures}/Screenshots";
+          SCREENSHOTS = "${config.hm.xdg.userDirs.pictures}/Screenshots";
         };
       };
 

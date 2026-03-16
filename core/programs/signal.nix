@@ -8,20 +8,27 @@ let
 in
 {
   hm.home.packages = [
-    (pkgs.signal-desktop-bin.overrideAttrs (
-      finalAttrs: previousAttrs: {
-        buildInputs = previousAttrs.buildInputs ++ [ pkgs.asar ];
-        postInstall = ''
-          asar extract $out/lib/signal-desktop/resources/app.asar temp/
-          cp ${catpuccin-css} temp/stylesheets/catppuccin-mocha.css
-          substituteInPlace temp/stylesheets/catppuccin-mocha.css \
+    (pkgs.signal-desktop.overrideAttrs (old: {
+      postPatch = (old.postPatch or "") + ''
+        echo "Looking for Signal stylesheet locations..."
+        find . -path '*stylesheets*' -o -name 'manifest.css'
+
+        cssdir="$(dirname "$(find . -name manifest.css | head -n1)")"
+
+        if [ -z "$cssdir" ]; then
+          echo "Could not find manifest.css"
+          exit 1
+        fi
+
+        cp ${catpuccin-css} "$cssdir/catppuccin-mocha.css"
+
+        substituteInPlace "$cssdir/catppuccin-mocha.css" \
           --replace-fail "#1e1e2e" "${colors.base00}" \
           --replace-fail "#181825" "${colors.base00}" \
           --replace-fail "#11111b" "${colors.base00}"
-          sed -i '1s/^/@import "catppuccin-mocha.css";\n /' temp/stylesheets/manifest.css
-          asar pack --unpack '*.node' temp/ $out/lib/signal-desktop/resources/app.asar
-        '';
-      }
-    ))
+
+        sed -i '1i @import "catppuccin-mocha.css";' "$cssdir/manifest.css"
+      '';
+    }))
   ];
 }
