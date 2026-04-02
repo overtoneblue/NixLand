@@ -33,9 +33,10 @@ in
           # wpa_supplicant_gui
           obsidian
           # stremio
+          calibre
           zathura
           gsettings-desktop-schemas
-          # calibre
+          mypaint
           hyprpicker
           gnome-podcasts
           grimblast

@@ -16,7 +16,7 @@ with lib;
       protonplus
       # retroarch-full
       lutris
-      wineWowPackages.waylandFull
+      # wineWowPackages.waylandFull
       # pokemmo-installer
       gamescope
       gamescope-wsi

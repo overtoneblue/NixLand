@@ -18,7 +18,7 @@
     ./firefox.nix
     ./git.nix
     ./kitty.nix
-    # ./signal.nix
+    ./signal.nix
     ./thunar.nix
     ./vscode.nix
   ];
