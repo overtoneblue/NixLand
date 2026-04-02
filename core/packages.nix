@@ -30,6 +30,7 @@ in
           #actual apps
           ttyper
           wofi
+          plexamp
           # wpa_supplicant_gui
           obsidian
           # stremio
