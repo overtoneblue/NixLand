@@ -34,6 +34,19 @@
         };
       };
     };
+    diagnostics = {
+      enable = true;
+      config = {
+        underline = {
+          severity = {
+            min = lib.generators.mkLuaInline "vim.diagnostic.severity.ERROR";
+          };
+        };
+        virtual_text = false;
+        signs = true;
+        float = true;
+      };
+    };
     lsp = {
       enable = true;
       formatOnSave = true;
@@ -75,6 +88,10 @@
         enable = true;
         format.enable = true;
         lsp.enable = true;
+        extraDiagnostics = {
+          enable = true;
+          types = [ "mypy" ];
+        };
       };
       lua = {
         enable = true;
