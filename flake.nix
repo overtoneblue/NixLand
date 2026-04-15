@@ -5,6 +5,8 @@
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,28 +58,30 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      ...
-    }@inputs:
-    {
-      nixosConfigurations = {
-        europa = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/europa
-          ];
-        };
-        callisto = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/callisto
-          ];
-        };
+    inputs@{ flake-parts, nixpkgs, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [
+        inputs.home-manager.flakeModules.home-manager
+      ];
+      flake = {
+        nixosConfigurations = {
+          europa = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = { inherit inputs; };
+            modules = [
+              ./hosts/europa
+            ];
+          };
 
+          callisto = nixpkgs.lib.nixosSystem {
+            system = "aarch64-linux";
+            specialArgs = { inherit inputs; };
+            modules = [
+              ./hosts/callisto
+            ];
+          };
+        };
+        homeModules.myNeovim = import ./core/programs/nvf { inherit inputs; };
       };
     };
 }

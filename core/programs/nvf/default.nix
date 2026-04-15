@@ -1,23 +1,18 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, osConfig
-, ...
-}:
 {
-  hm.imports = [
-    inputs.nvf.homeManagerModules.default
-  ];
+  inputs,
+  ...
+}:
+
+{
   imports = [
+    inputs.nvf.homeManagerModules.default
     ./keymaps.nix
     ./lsp-format.nix
     ./lualine.nix
     ./misc.nix
     ./utility.nix
   ];
-  hm.programs.nvf = {
+  programs.nvf = {
     enable = true;
     # most settings are documented in the appendix
     settings.vim = {

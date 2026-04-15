@@ -1,10 +1,11 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, osConfig
-, ...
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  osConfig,
+  ...
 }:
 let
   mkKeymap = mode: key: action: desc: {
@@ -17,7 +18,7 @@ let
   };
 in
 {
-  hm.programs.nvf.settings.vim = {
+  programs.nvf.settings.vim = {
     binds.whichKey = {
       enable = true;
       register = {

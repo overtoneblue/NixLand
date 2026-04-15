@@ -24,7 +24,10 @@ in
     backupFileExtension = "backup";
     users = {
       cenunix = {
-        imports = [ ../../core/home.nix ];
+        imports = [
+          ../../core/home.nix
+          inputs.self.homeModules.myNeovim
+        ];
       };
     };
   };

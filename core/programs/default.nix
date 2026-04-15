@@ -12,7 +12,7 @@
     ./discord
     ./hyprland
     ./lf
-    ./nvf
+    # ./nvf
     ./dms
     ./spotify
     ./firefox.nix

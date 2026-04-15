@@ -1,13 +1,14 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, osConfig
-, ...
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  osConfig,
+  ...
 }:
 {
-  hm.programs.nvf.settings.vim = {
+  programs.nvf.settings.vim = {
     statusline.lualine = {
       enable = true;
       theme = "base16";
